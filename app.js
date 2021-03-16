@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import router from './router.js';
 import cors from 'cors';
+
 const DB_URL =
   'mongodb+srv://dmitry:admin@cluster0.xzm8b.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 3002;

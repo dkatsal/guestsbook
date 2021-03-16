@@ -8,13 +8,6 @@ import { API_URL } from './config';
 function App() {
   const [comments, setComments] = React.useState([]);
 
-  const onAddComment = (comment) => {
-    setComments((prevComments) => [
-      ...prevComments,
-      { name: comment.name, text: comment.text, time: comment.time },
-    ]);
-  };
-
   const getComments = async () => {
     const response = await axios.get(`${API_URL}posts`);
     if (response && response.data) setComments(response.data);
@@ -23,6 +16,13 @@ function App() {
   React.useEffect(() => {
     getComments();
   }, []);
+
+  const onAddComment = (comment) => {
+    setComments((prevComments) => [
+      ...prevComments,
+      { name: comment.name, text: comment.text, time: comment.time },
+    ]);
+  };
 
   const deleteComment = async (id) => {
     await axios.delete(`${API_URL}posts/${id}`).then((res) => {
@@ -39,17 +39,16 @@ function App() {
         at ad assumenda. Sunt praesentium, dicta consequatur repudiandae voluptas eius optio quos
         architecto dolorem, eligendi animi assumenda aliquam!
       </div>
-      {comments &&
-        comments.map((comment, index) => (
-          <ShowComments
-            key={index}
-            id={comment._id}
-            name={comment.name}
-            text={comment.text}
-            time={comment.time}
-            deleteId={deleteComment}
-          />
-        ))}
+      {comments.map((comment, index) => (
+        <ShowComments
+          key={index}
+          id={comment._id}
+          name={comment.name}
+          text={comment.text}
+          time={comment.time}
+          deleteId={deleteComment}
+        />
+      ))}
       <PostComments onAddComment={onAddComment} />
     </div>
   );
