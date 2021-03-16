@@ -27,6 +27,9 @@ export const PostComments = ({ onAddComment }) => {
     let date = a.getDate();
     let hours = a.getHours();
     let minutes = a.getMinutes();
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
     let time = `${hours}:${minutes} / ${date} ${month} ${year} `;
     return time;
   };
