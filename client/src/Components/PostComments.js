@@ -6,27 +6,27 @@ export const PostComments = ({ onAddComment }) => {
   const [name, setName] = React.useState('');
   const [text, setText] = React.useState('');
 
-  const nowTime = (UNIX_timestamp) => {
-    let a = new Date();
-    let months = [
-      'января',
-      'февраля',
-      'марта',
-      'апреля',
-      'мая',
-      'июня',
-      'июля',
-      'августа',
-      'сентября',
-      'октября',
-      'ноября',
-      'декабря',
-    ];
-    let year = a.getFullYear();
-    let month = months[a.getMonth()];
-    let date = a.getDate();
-    let hours = a.getHours();
-    let minutes = a.getMinutes();
+  const nowTime = () => {
+    let a = new Date(),
+      months = [
+        'января',
+        'февраля',
+        'марта',
+        'апреля',
+        'мая',
+        'июня',
+        'июля',
+        'августа',
+        'сентября',
+        'октября',
+        'ноября',
+        'декабря',
+      ],
+      year = a.getFullYear(),
+      month = months[a.getMonth()],
+      date = a.getDate(),
+      hours = a.getHours(),
+      minutes = a.getMinutes();
     if (minutes < 10) {
       minutes = `0${minutes}`;
     }
